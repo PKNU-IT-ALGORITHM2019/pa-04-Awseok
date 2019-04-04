@@ -5,7 +5,7 @@
 #pragma warning(disable:4013)
 #pragma warning(disable:4996)
 
-char opcode[30] = { 0 }, *token, time_cmp[22], month[4], day[3], check_sort_type;
+char opcode[30] = { 0 }, *token, *sort_token, time_cmp[22], month[4], day[3], check_sort_type;
 int arr_max;
 FILE *file = NULL;
 
@@ -175,11 +175,11 @@ void Run()
 		printf("$ ");
 		gets(opcode);
 		token = strtok(opcode, " ");
-
-		if (strcmp(token, "sort") == 0)
+		sort_token = strtok(NULL, "\n");
+		if (strcmp(token, "sort") == 0 && sort_token != NULL)
 		{
-			token = strtok(NULL, "\n");
-			if (strcmp(token + 1, "t") == 0)
+			//token = strtok(NULL, "\n");
+			if (strcmp(sort_token + 1, "t") == 0)
 			{
 				sort(0); // 0 = t, 1 = ip
 				check_sort_type = 0;
